@@ -239,8 +239,12 @@ test('the immediate header is complete before asynchronous configuration loads',
   assert.match(inlineHeader, /data-nav-link/);
   assert.match(inlineHeader, /data-auth-trigger/);
   assert.match(inlineHeader, /id="mobile-menu-toggle"/);
-  assert.match(inlineHeader, /data-navigation-item="github"/);
-  assert.match(header, /data-navigation-item="github"/);
+  assert.match(inlineHeader, /苏七三/);
+  assert.match(inlineHeader, /SU73GEO_Rank/);
+  assert.match(header, /苏七三/);
+  assert.match(header, /SU73GEO_Rank/);
+  assert.doesNotMatch(inlineHeader, /data-navigation-item="github"/);
+  assert.doesNotMatch(header, /data-navigation-item="github"/);
   assert.doesNotMatch(source, /HEADER_SHELL_HTML/);
   assert.match(
     source,

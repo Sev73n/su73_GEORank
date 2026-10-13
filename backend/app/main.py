@@ -47,7 +47,7 @@ async def _seed_settings(db):
     from app.services.navigation_settings import get_default_navigation_menu
 
     defaults = [
-        {"key": "site_name", "value": "GEOrank", "category": "basic", "is_public": True},
+        {"key": "site_name", "value": "苏七三", "category": "basic", "is_public": True},
         {"key": "site_description", "value": "追踪生成式人工智能搜索引擎优化领域的顶尖创新者与技术先锋。", "category": "basic", "is_public": True},
         {"key": "default_language", "value": "zh-CN", "category": "basic", "is_public": True},
         {"key": "timezone", "value": "Asia/Shanghai", "category": "basic", "is_public": False},

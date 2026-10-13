@@ -57,7 +57,7 @@ function parseLegacyHtml(page: LegacyPageId): ParsedLegacyHtml {
 
 export function getLegacyMetadata(page: LegacyPageId): Metadata {
   const source = readLegacySource(page);
-  const title = source.match(/<title>([^<]*)<\/title>/i)?.[1] || 'GEOrank';
+  const title = source.match(/<title>([^<]*)<\/title>/i)?.[1] || '苏七三';
   const description = source.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || title;
   return {title, description};
 }

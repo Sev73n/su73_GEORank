@@ -63,7 +63,7 @@
     // ===== 公开站点设置 =====
     const SiteSettings = {
         defaults: {
-            site_name: 'GEOrank',
+            site_name: '苏七三',
             site_description: 'GEO 智搜优化引擎',
             analytics_tracking_code: '',
             navigation_menu: {
@@ -76,7 +76,6 @@
                     { id: 'tools', label: '工具', url: '/tools', target: '_blank', enabled: true },
                     { id: 'experts', label: '专家', url: '/experts', target: '_blank', enabled: true },
                     { id: 'tutorial', label: '教程', url: '/tutorial', target: '_blank', enabled: true },
-                    { id: 'github', label: 'GitHub', url: 'https://github.com/yaojingang/GEORank', target: '_blank', enabled: true },
                 ],
             },
         },
@@ -113,8 +112,14 @@
             return this.state.promise;
         },
 
+        normalizeBrandName(value) {
+            const name = String(value || '').trim();
+            if (!name || /^geo\s*rank(?:hub)?$/i.test(name)) return '苏七三';
+            return name;
+        },
+
         normalize(payload) {
-            const cleanName = String(payload?.site_name || '').trim();
+            const cleanName = this.normalizeBrandName(payload?.site_name);
             const cleanDescription = String(payload?.site_description || '').trim();
             const analyticsCode = String(payload?.analytics_tracking_code || '').trim();
             return {
@@ -148,7 +153,7 @@
                 url: this.normalizeNavigationUrl(item?.url),
                 target: item?.target === '_self' ? '_self' : '_blank',
                 enabled: item?.enabled !== false,
-            })).filter(item => item.enabled && item.label && item.url);
+            })).filter(item => item.enabled && item.label && item.url && !/github\.com\/yaojingang\/georank/i.test(item.url));
             return {items: items.length ? items : this.defaults.navigation_menu.items.map(item => ({...item}))};
         },
 
@@ -207,8 +212,17 @@
             if (!siteName) return;
 
             document.querySelectorAll('[data-logo-link]').forEach(link => {
-                link.textContent = siteName;
-                link.setAttribute('aria-label', siteName);
+                const brandZh = siteName || '苏七三';
+                link.setAttribute('aria-label', `${brandZh} SU73GEO_Rank`);
+                link.replaceChildren();
+                const zh = document.createElement('span');
+                zh.className = 'brand-logo-zh';
+                zh.textContent = brandZh;
+                const en = document.createElement('span');
+                en.className = 'brand-logo-en';
+                en.style.cssText = 'display:block;font-size:10px;font-weight:600;letter-spacing:.03em;line-height:1.2';
+                en.textContent = 'SU73GEO_Rank';
+                link.append(zh, en);
             });
             this.applyNavigation(root);
 
@@ -367,6 +381,9 @@
                 'auth.remember': '保持登录',
                 'auth.submitLogin': '登录',
                 'auth.submitRegister': '注册并登录',
+                'auth.demoLogin': '模拟账号登录',
+                'auth.demoHint': '无需手机号注册，使用本地演示账号直接进入。',
+                'auth.toastDemoSignedIn': '已使用模拟账号登录',
                 'auth.submittingLogin': '登录中...',
                 'auth.submittingRegister': '注册中...',
                 'auth.openLoginPage': '打开登录页',
@@ -383,8 +400,8 @@
                 'auth.toastSignedIn': '{phone} 已登录',
                 'auth.standaloneLoginEyebrow': 'ACCOUNT ACCESS',
                 'auth.standaloneRegisterEyebrow': 'CREATE ACCOUNT',
-                'auth.standaloneLoginTitle': '登录 GEOrank',
-                'auth.standaloneRegisterTitle': '注册并开始使用 GEOrank',
+                'auth.standaloneLoginTitle': '登录 苏七三',
+                'auth.standaloneRegisterTitle': '注册并开始使用 苏七三',
                 'auth.standaloneLoginCopy': '使用手机号和密码即可完成登录，会话会长期保留在当前浏览器中。',
                 'auth.standaloneRegisterCopy': '使用手机号和密码即可完成注册，会话会长期保留在当前浏览器中。',
                 'auth.standaloneHint': '每个浏览器默认绑定一个手机号，用于稳定保存登录状态。',
@@ -519,6 +536,9 @@
                 'auth.remember': 'Keep me signed in',
                 'auth.submitLogin': 'Log in',
                 'auth.submitRegister': 'Register and log in',
+                'auth.demoLogin': 'Use demo account',
+                'auth.demoHint': 'No phone number required. Enter with a local demo account.',
+                'auth.toastDemoSignedIn': 'Signed in with the demo account',
                 'auth.submittingLogin': 'Logging in...',
                 'auth.submittingRegister': 'Registering...',
                 'auth.openLoginPage': 'Open login page',
@@ -535,8 +555,8 @@
                 'auth.toastSignedIn': '{phone} signed in',
                 'auth.standaloneLoginEyebrow': 'ACCOUNT ACCESS',
                 'auth.standaloneRegisterEyebrow': 'CREATE ACCOUNT',
-                'auth.standaloneLoginTitle': 'Log in to GEOrank',
-                'auth.standaloneRegisterTitle': 'Create your GEOrank account',
+                'auth.standaloneLoginTitle': 'Log in to SU73GEO_Rank',
+                'auth.standaloneRegisterTitle': 'Create your SU73GEO_Rank account',
                 'auth.standaloneLoginCopy': 'Use your phone number and password to log in. Your session stays on this browser.',
                 'auth.standaloneRegisterCopy': 'Use your phone number and password to register. Your session stays on this browser.',
                 'auth.standaloneHint': 'Each browser is bound to one phone number to keep the login state stable.',
@@ -690,8 +710,9 @@
 <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 shadow-[0_10px_40px_rgba(25,27,35,0.04)]">
     <div class="flex justify-between items-center px-6 md:px-8 h-16 w-full max-w-7xl mx-auto">
         <div class="flex items-center gap-8">
-            <a href="/" data-logo-link class="text-xl font-bold tracking-tighter text-blue-700 dark:text-blue-500 font-headline hover:opacity-90 transition-opacity">
-                GEOrank
+            <a href="/" data-logo-link aria-label="苏七三 SU73GEO_Rank" class="text-xl font-bold tracking-tighter text-blue-700 dark:text-blue-500 font-headline hover:opacity-90 transition-opacity">
+                <span class="brand-logo-zh">苏七三</span>
+                <span class="brand-logo-en" style="display:block;font-size:10px;font-weight:600;letter-spacing:.03em;line-height:1.2">SU73GEO_Rank</span>
             </a>
             <div class="hidden md:flex items-center gap-5" data-site-navigation data-navigation-variant="desktop">
                 <a href="/companies" data-nav-link data-i18n="nav.companies" class="font-manrope font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">公司</a>
@@ -702,7 +723,6 @@
                 <a href="/tools" data-nav-link data-i18n="nav.tools" class="font-manrope font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">工具</a>
                 <a href="/experts" data-nav-link data-i18n="nav.experts" class="font-manrope font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">专家</a>
                 <a href="/tutorial" data-nav-link data-i18n="nav.tutorial" class="font-manrope font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">教程</a>
-                <a href="https://github.com/yaojingang/GEORank" target="_blank" rel="noopener noreferrer" data-nav-link data-navigation-item="github" class="font-manrope font-medium tracking-tight text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">GitHub</a>
             </div>
         </div>
         <div class="header-actions flex items-center gap-2 md:gap-3">
@@ -732,7 +752,6 @@
             <a href="/tools" data-nav-link data-i18n="nav.tools" class="font-manrope font-medium py-2 text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors">工具</a>
             <a href="/experts" data-nav-link data-i18n="nav.experts" class="font-manrope font-medium py-2 text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors">专家</a>
             <a href="/tutorial" data-nav-link data-i18n="nav.tutorial" class="font-manrope font-medium py-2 text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors">教程</a>
-            <a href="https://github.com/yaojingang/GEORank" target="_blank" rel="noopener noreferrer" data-nav-link data-navigation-item="github" class="font-manrope font-medium py-2 text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors">GitHub</a>
         </div>
     </div>
 </nav>`;
@@ -740,7 +759,7 @@
 const FOOTER_HTML = `
 <footer class="w-full mt-auto border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950">
     <div class="max-w-7xl mx-auto px-6 md:px-8 py-6">
-        <p class="font-inter text-sm text-slate-400 dark:text-slate-500 text-center" data-footer-rights>© 2026 GEORankHub · 公益性 GEO 研究平台 · 独立第三方 · <strong><a href="https://github.com/yaojingang/GEORank" target="_blank" rel="noopener noreferrer">GitHub</a>开源</strong></p>
+        <p class="font-inter text-sm text-slate-400 dark:text-slate-500 text-center" data-footer-rights>© 2026 苏七三 · SU73GEO_Rank</p>
     </div>
 </footer>`;
 
@@ -1311,7 +1330,7 @@ const FOOTER_HTML = `
 
         renderUnavailable(key) {
             const module = this.getModule(key);
-            const siteName = window.GEOrank?.SiteSettings?.settings?.site_name || 'GEOrank';
+            const siteName = window.GEOrank?.SiteSettings?.settings?.site_name || '苏七三';
             document.title = `${module?.name || '模块'}暂未开放 - ${siteName}`;
             const main = document.querySelector('main') || document.createElement('main');
             main.className = 'frontend-module-unavailable';
@@ -1433,6 +1452,7 @@ const FOOTER_HTML = `
     const Auth = {
         TOKEN_KEY: 'georank_user_token',
         USER_KEY: 'georank_user_profile',
+        DEMO_TOKEN: 'demo-su73-local',
         BOUND_PHONE_KEY: 'georank_browser_phone',
         PROMPTED_KEY: 'georank_auth_prompted_v1',
         MODAL_ID: 'georank-auth-modal',
@@ -1526,7 +1546,43 @@ const FOOTER_HTML = `
             return Boolean(this.getToken());
         },
 
+        demoUser() {
+            return {
+                id: 'demo-su73',
+                username: '苏七三',
+                phone: '13800000000',
+                email: 'demo@su73.local',
+                role: 'user',
+            };
+        },
+
+        isDemoSession() {
+            return this.getToken() === this.DEMO_TOKEN;
+        },
+
+        loginAsDemo() {
+            const user = this.demoUser();
+            this.setSession(this.DEMO_TOKEN, user, true);
+            return user;
+        },
+
+        finishDemoLogin() {
+            const user = this.loginAsDemo();
+            this.closeModal();
+            const currentPath = Routes.normalizePath(window.location.pathname);
+            if (currentPath === '/login' || currentPath === '/register') {
+                const params = new URLSearchParams(window.location.search);
+                window.location.href = this.safeReturnTo(params.get('return'), '/');
+                return user;
+            }
+            this.showToast(I18N.t('auth.toastDemoSignedIn'));
+            return user;
+        },
+
         async request(path, options = {}) {
+            if (this.isDemoSession() && /\/api\/auth\/me\/?$/.test(String(path || ''))) {
+                return this.demoUser();
+            }
             const headers = {
                 'Content-Type': 'application/json',
                 ...DeviceIdentity.getHeaders(),
@@ -1670,6 +1726,8 @@ const FOOTER_HTML = `
                         </label>
                         <p class="auth-form__error hidden" data-auth-error></p>
                         <button type="submit" class="auth-form__submit" data-auth-submit data-i18n="auth.submitLogin">登录</button>
+                        <button type="button" class="auth-form__demo" data-auth-demo data-i18n="auth.demoLogin">模拟账号登录</button>
+                        <p class="auth-form__hint" data-i18n="auth.demoHint">无需手机号注册，使用本地演示账号直接进入。</p>
                         <div class="auth-form__links">
                             <a href="/login" data-auth-standalone="login" data-i18n="auth.openLoginPage">打开登录页</a>
                             <a href="/register" data-auth-standalone="register" data-i18n="auth.openRegisterPage">打开注册页</a>
@@ -1688,6 +1746,9 @@ const FOOTER_HTML = `
             wrapper.querySelector('[data-auth-form]')?.addEventListener('submit', (event) => {
                 event.preventDefault();
                 void this.handleFormSubmit(wrapper.querySelector('[data-auth-form]'));
+            });
+            wrapper.querySelector('[data-auth-demo]')?.addEventListener('click', () => {
+                this.finishDemoLogin();
             });
         },
 
@@ -1965,6 +2026,8 @@ const FOOTER_HTML = `
                             </label>
                             <p class="auth-form__error hidden" data-auth-error></p>
                             <button type="submit" class="auth-form__submit">${mode === 'register' ? I18N.t('auth.submitRegister') : I18N.t('auth.submitLogin')}</button>
+                            <button type="button" class="auth-form__demo" data-auth-demo>${I18N.t('auth.demoLogin')}</button>
+                            <p class="auth-form__hint">${I18N.t('auth.demoHint')}</p>
                             <div class="auth-form__links">
                                 ${mode === 'register'
                                     ? `<a href="${this.authLinkWithReturn('/login')}">${I18N.t('auth.goLogin')}</a>`
@@ -1979,6 +2042,9 @@ const FOOTER_HTML = `
             root.querySelector('[data-auth-standalone-form]')?.addEventListener('submit', (event) => {
                 event.preventDefault();
                 void this.handleFormSubmit(root.querySelector('[data-auth-standalone-form]'));
+            });
+            root.querySelector('[data-auth-demo]')?.addEventListener('click', () => {
+                this.finishDemoLogin();
             });
             const phoneInput = root.querySelector('input[name="phone"]');
             if (boundPhone && phoneInput && !phoneInput.value) {
@@ -2298,7 +2364,7 @@ const FOOTER_HTML = `
             const reasonEl = modal?.querySelector('[data-api-key-reason]');
             if (reasonEl) {
                 const message = reason || guidance.message || '平台额度当前不可用，请绑定自己的 API Key。';
-                reasonEl.textContent = SiteSettings.replaceBrand(`${message} Key 只保存在当前浏览器，不会保存到 GEOrank 数据库。`);
+                reasonEl.textContent = SiteSettings.replaceBrand(`${message} Key 只保存在当前浏览器，不会保存到 苏七三 数据库。`);
             }
             modal?.classList.remove('hidden');
             document.body.classList.add('auth-modal-open');

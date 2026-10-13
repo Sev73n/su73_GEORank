@@ -1066,7 +1066,7 @@ def _geo_overview_markup(company: Company) -> str:
     <div class="company-overview-layout">
         <div class="company-overview-summary">
             <p class="company-overview-verdict">{escape(verdict)}</p>
-            <p class="company-overview-explanation">GEOrank 从结构化表达、答案内容、预览信息和外部引用四个方向，判断公开资料被生成式引擎理解和引用的稳定程度。</p>
+            <p class="company-overview-explanation">苏七三 从结构化表达、答案内容、预览信息和外部引用四个方向，判断公开资料被生成式引擎理解和引用的稳定程度。</p>
             <dl class="company-overview-facts">
                 <div><dt>综合评分</dt><dd>{escape(overall_score)}</dd></div>
                 <div><dt>当前表现</dt><dd>{escape(_geo_score_band(company.geo_score))}</dd></div>
@@ -1548,14 +1548,14 @@ def _company_structured_data(request: Request, company: Company, canonical_url: 
     webpage = {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": f"{company_name} - GEOrank 公司档案",
+        "name": f"{company_name} - 苏七三 公司档案",
         "description": description,
         "url": canonical_url,
         "mainEntity": {"@id": canonical_url},
         "about": keywords[:8],
         "isPartOf": {
             "@type": "WebSite",
-            "name": "GEOrank",
+            "name": "苏七三",
             "url": _absolute_url(request, "/"),
         },
     }
@@ -1579,7 +1579,7 @@ def _render_meta_tags(
         f'<meta name="robots" content="{escape(robots)}">',
         f'<meta name="keywords" content="{escape(", ".join(keywords))}">',
         f'<link rel="canonical" href="{escape(canonical_url)}">',
-        '<meta property="og:site_name" content="GEOrank">',
+        '<meta property="og:site_name" content="苏七三">',
         '<meta property="og:type" content="website">',
         f'<meta property="og:title" content="{escape(title)}">',
         f'<meta property="og:description" content="{escape(description)}">',
@@ -1609,7 +1609,7 @@ def _render_page(
         or _public_profile_value(company.description)
         or "查看该公司的 GEO 资料、技术栈、团队信息与相似推荐。"
     )[:300]
-    title = f"{display_name} - GEO 公司档案 | GEOrank"
+    title = f"{display_name} - GEO 公司档案 | 苏七三"
     keywords = _company_keywords(company)
     meta_tags = _render_meta_tags(
         title=title,
@@ -1805,7 +1805,7 @@ def _render_page(
 
             <section id="company-geo" class="company-editorial-section" aria-labelledby="company-geo-title">
                 <header class="company-section-heading">
-                    <p>GEOrank / AI 可见性</p>
+                    <p>苏七三 / AI 可见性</p>
                     <h2 id="company-geo-title">GEO 分析</h2>
                     <span>查看公司公开信息被生成式引擎理解、识别和引用的当前状态。</span>
                 </header>

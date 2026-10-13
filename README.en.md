@@ -1,22 +1,20 @@
-# GEOrank
+# SU73GEO_Rank
 
 [简体中文](README.md) | English
 
-**[Try the official demo: GEORankHub](https://www.georankhub.com/)**
+Chinese name: 苏七三
 
-[GitHub repository](https://github.com/yaojingang/GEORank)
-
-GEOrank is an open-source workbench for Generative Engine Optimization. It helps teams diagnose AI search visibility, turn insights into Q&A and action plans, expand keyword assets, generate structured content tools, and manage the workflow through a self-hosted admin console.
+SU73GEO_Rank is an open-source workbench for Generative Engine Optimization. It helps teams diagnose AI search visibility, turn insights into Q&A and action plans, expand keyword assets, generate structured content tools, and manage the workflow through a self-hosted admin console.
 
 Teams can use it as an internal GEO toolbox, apply it to their own diagnostic and analysis workflows, or self-host and extend the code to deliver GEO tools and services to clients.
 
 This repository includes the product code, engineering structure, configuration templates, demo data, and the built-in public expert profiles used by the experts channel. It does not include private production data, non-public expert content, real tutorial assets, user conversations, generated customer plans, keyword packs, database dumps, object storage files, or API keys.
 
-## Official Demo
+## Brand
 
-[GEORankHub](https://www.georankhub.com/) is the official online demo and public-interest GEO research platform for GEOrank. It provides direct access to website diagnostics, GEO Q&A, action plans, keyword expansion, structured tools, tutorials, open documentation, and research resources.
+The Chinese name is 苏七三 and the English name is SU73GEO_Rank. The site covers website diagnostics, GEO Q&A, action plans, keyword expansion, structured tools, and tutorials.
 
-## Why GEOrank?
+## Why SU73GEO_Rank?
 
 Search is moving from traditional result pages to AI answers. Users increasingly ask systems such as ChatGPT, Claude, Perplexity, and Gemini directly instead of clicking through search result pages.
 
@@ -29,15 +27,15 @@ That creates a new set of questions:
 - How can keywords, questions, tutorials, tools, and expert resources become reusable assets?
 - How can an open-source system support user-owned API keys and reduce platform operating costs?
 
-GEOrank turns those disconnected tasks into a structured workflow: diagnose, ask, plan, expand, structure, and manage.
+SU73GEO_Rank turns those disconnected tasks into a structured workflow: diagnose, ask, plan, expand, structure, and manage.
 
 The open-source build shows the built-in GEO workbench homepage at `/` by default. The original company directory remains available at `/companies`, and you can upload or switch custom homepage releases from the admin settings panel.
 
-## How You Can Use GEOrank
+## How You Can Use SU73GEO_Rank
 
 - **Build an internal GEO toolbox**: bring website diagnostics, AI Q&A, action plans, keyword expansion, and structured-content tools into one workspace for growth, SEO, content, and product teams.
 - **Improve your own business and brand**: analyze the AI search visibility of corporate sites, product pages, and brand content, then produce diagnostic reports, recommendations, content ideas, and 30/60/90-day action plans.
-- **Deliver GEO services to clients**: consulting firms, marketing agencies, and independent advisors can use GEOrank for client diagnostics, Q&A, analysis, keyword planning, and content-tool support across pre-sales assessments, project delivery, and ongoing advisory work.
+- **Deliver GEO services to clients**: consulting firms, marketing agencies, and independent advisors can use SU73GEO_Rank for client diagnostics, Q&A, analysis, keyword planning, and content-tool support across pre-sales assessments, project delivery, and ongoing advisory work.
 - **Run GEO capabilities in your own environment**: deploy the full project on your infrastructure and connect your own model APIs, databases, analytics, and access policies while keeping business data, credentials, and client records under your control.
 - **Create a tailored product from the open-source code**: extend the homepage, channels, diagnostic rules, model providers, and tool modules for an internal team, a specific industry, or a client segment.
 - **Build a GEO resource and knowledge platform**: organize companies, tools, service providers, experts, tutorials, and case studies into a public directory, a tool collection, or an internal GEO knowledge base.
@@ -58,7 +56,7 @@ The open-source build shows the built-in GEO workbench homepage at `/` by defaul
 
 ## Architecture
 
-GEOrank is a monorepo with a static frontend, a Next.js 2.0 migration path, a FastAPI backend, and shared packages.
+SU73GEO_Rank is a monorepo with a static frontend, a Next.js 2.0 migration path, a FastAPI backend, and shared packages.
 
 - **Frontend**: the 3009 static frontend is the current experience baseline, with a Next.js App Router migration path.
 - **Admin**: Next.js admin console for companies, diagnostics, Q&A, keywords, experts, tutorials, users, and settings.
@@ -69,7 +67,7 @@ GEOrank is a monorepo with a static frontend, a Next.js 2.0 migration path, a Fa
 
 ## Local deployment with Docker
 
-GEOrank is deployed with Docker Compose. Before you begin, install and start Docker Desktop on Windows/macOS, or Docker Engine with the Compose plugin on Linux.
+SU73GEO_Rank is deployed with Docker Compose. Before you begin, install and start Docker Desktop on Windows/macOS, or Docker Engine with the Compose plugin on Linux.
 
 > If Docker has never been installed on the computer, ask Codex to inspect the system, install Docker, complete the required setup, and start the project. A first-time Windows installation may require administrator approval, WSL 2, and a reboot.
 
@@ -125,7 +123,7 @@ It does not include:
 
 ## Disclaimer
 
-GEOrank is a research and engineering project for Generative Engine Optimization. It helps teams analyze and improve AI search visibility, but it does not sell rankings, guarantee model recommendations, or represent any AI search provider.
+SU73GEO_Rank is a research and engineering project for Generative Engine Optimization. It helps teams analyze and improve AI search visibility, but it does not sell rankings, guarantee model recommendations, or represent any AI search provider.
 
 ## License
 

@@ -392,7 +392,7 @@
                 window.history.replaceState({ companyId: company.id }, '', Routes.buildCompanyDetail(company.path_key || company.id));
             }
 
-            const detailTitle = `${company.name} - GEOrank`;
+            const detailTitle = `${company.name} - 苏七三`;
             document.title = window.GEOrank?.SiteSettings?.replaceBrand?.(detailTitle) || detailTitle;
             const meta = document.querySelector('meta[name="description"]');
             if (meta) {

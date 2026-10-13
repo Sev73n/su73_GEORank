@@ -119,7 +119,7 @@
                 count: 8,
                 items: [
                     { keyword: '移山科技 GEO服务', recommendation_score: 77, business_score: 72 },
-                    { keyword: 'GEOrank 服务商', recommendation_score: 76, business_score: 73 },
+                    { keyword: '苏七三 服务商', recommendation_score: 76, business_score: 73 },
                     { keyword: 'GEO服务商官网', recommendation_score: 74, business_score: 70 },
                     { keyword: 'GEO服务商竞品', recommendation_score: 78, business_score: 74 },
                     { keyword: 'GEO优化替代方案', recommendation_score: 75, business_score: 68 },
@@ -455,7 +455,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `GEOrank_词包_${tags.join('_')}.csv`;
+        a.download = `SU73GEO_Rank_词包_${tags.join('_')}.csv`;
         a.click();
         URL.revokeObjectURL(url);
     }

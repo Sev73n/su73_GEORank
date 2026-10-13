@@ -549,7 +549,7 @@ ${state.companyId ? `已关联公司 ID：${state.companyId}` : ''}`;
     </style>
 </head>
 <body>
-    <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#2563eb;font-weight:800;">GEOrank GEO Plan</p>
+    <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#2563eb;font-weight:800;">SU73GEO_Rank GEO Plan</p>
     ${renderMarkdown(state.lastReply)}
 </body>
 </html>`;

@@ -77,7 +77,10 @@ export function SiteHeader({locale = 'zh-CN'}: SiteHeaderProps) {
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <a className="site-header__brand" href={localizeHref(locale, '/')}>GEOrank</a>
+        <a className="site-header__brand" href={localizeHref(locale, '/')} aria-label={locale === 'en-US' ? 'SU73GEO_Rank 苏七三' : '苏七三 SU73GEO_Rank'} style={{display: 'flex', flexDirection: 'column', lineHeight: 1.1}}>
+          <span>{locale === 'en-US' ? 'SU73GEO_Rank' : '苏七三'}</span>
+          <span style={{fontSize: 10, fontWeight: 600, letterSpacing: '0.03em'}}>{locale === 'en-US' ? '苏七三' : 'SU73GEO_Rank'}</span>
+        </a>
         <nav className="site-header__nav">
           <a href={localizeHref(locale, '/companies')}>{nav('companies')}</a>
           <a href={localizeHref(locale, '/diagnostic')}>{nav('diagnostic')}</a>

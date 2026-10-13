@@ -231,7 +231,7 @@ DEFAULT_HOMEPAGE_RUNTIME = {
     "updated_by": None,
 }
 DEFAULT_HOMEPAGE_RELEASE_ID = DEFAULT_HOMEPAGE_RUNTIME["active_release_id"]
-DEFAULT_HOMEPAGE_RELEASE_TITLE = "GEORankHub 导航与版权更新"
+DEFAULT_HOMEPAGE_RELEASE_TITLE = "苏七三 导航与版权"
 VALID_AI_ACCESS_MODES = {
     "platform_unlimited",
     "daily_quota",

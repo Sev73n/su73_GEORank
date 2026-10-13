@@ -99,7 +99,8 @@ test('shared admin script mounts the complete shell before asynchronous hydratio
     },
   });
 
-  assert.match(sidebar.innerHTML, /GEOrank/);
+  assert.match(sidebar.innerHTML, /苏七三/);
+  assert.match(sidebar.innerHTML, /SU73GEO_Rank/);
   assert.match(sidebar.innerHTML, /仪表盘/);
   assert.match(sidebar.innerHTML, /用户管理/);
   assert.match(sidebar.innerHTML, /系统设置/);

@@ -412,7 +412,7 @@ def _render_meta_tags(
         f'<meta name="description" content="{escape(description)}">',
         f'<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">',
         f'<link rel="canonical" href="{escape(canonical_url)}">',
-        f'<meta property="og:site_name" content="GEOrank">',
+        f'<meta property="og:site_name" content="苏七三">',
         f'<meta property="og:type" content="{escape(og_type)}">',
         f'<meta property="og:title" content="{escape(title)}">',
         f'<meta property="og:description" content="{escape(description)}">',
@@ -580,7 +580,7 @@ def _home_structured_data(request: Request, groups: list[tuple[str, list[Content
         "url": _absolute_url(request, "/tutorial"),
         "isPartOf": {
             "@type": "WebSite",
-            "name": "GEOrank",
+            "name": "苏七三",
             "url": _absolute_url(request, "/"),
         },
         "about": ["GEO", "生成式引擎优化", "AI 搜索", "品牌增长"],
@@ -630,12 +630,12 @@ def _article_structured_data(request: Request, article: Content, description: st
         "timeRequired": f"PT{_tutorial_reading_time(article)}M",
         "author": {
             "@type": "Organization",
-            "name": "GEOrank",
+            "name": "苏七三",
             "url": _absolute_url(request, "/"),
         },
         "publisher": {
             "@type": "Organization",
-            "name": "GEOrank",
+            "name": "苏七三",
             "url": _absolute_url(request, "/"),
             "logo": {
                 "@type": "ImageObject",
@@ -691,7 +691,7 @@ async def tutorial_home(request: Request, db: DbSession, slug: str | None = None
     groups = _group_tutorials(tutorials)
     if not groups:
         return _render_page(
-            title="GEO 教程中心 - GEOrank",
+            title="GEO 教程中心 - 苏七三",
             description=SITE_DESCRIPTION,
             canonical_url=_absolute_url(request, "/tutorial"),
             side_nav_html='<div class="tutorial-state-card">当前还没有已发布教程</div>',
@@ -712,7 +712,7 @@ async def tutorial_home(request: Request, db: DbSession, slug: str | None = None
 
     tutorials_sorted = _ordered_tutorials(tutorials)
     return _render_page(
-        title="GEO 教程中心 - GEOrank",
+        title="GEO 教程中心 - 苏七三",
         description=SITE_DESCRIPTION,
         canonical_url=_absolute_url(request, "/tutorial"),
         side_nav_html=_render_side_nav(request, groups),
@@ -754,7 +754,7 @@ async def tutorial_detail(identifier: str, request: Request, db: DbSession):
     reading_time = _tutorial_reading_time(article)
 
     return _render_page(
-        title=f"{article.title} - GEOrank",
+        title=f"{article.title} - 苏七三",
         description=description,
         canonical_url=_tutorial_detail_url(request, article),
         side_nav_html=_render_side_nav(request, groups, current_identifier=canonical_identifier),

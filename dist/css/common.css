@@ -846,6 +846,21 @@ textarea:focus {
     box-shadow: none;
 }
 
+.auth-form__demo {
+    min-height: 3.25rem;
+    border: 1px solid #bfdbfe;
+    border-radius: 1rem;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.auth-form__demo:hover {
+    background: #dbeafe;
+}
+
 .auth-form__links {
     display: flex;
     justify-content: space-between;

@@ -70,7 +70,7 @@
 
     function renderDirectPolicyStatus(policy) {
         if (policy?.byok_transport_mode === 'browser_direct' && policy?.allow_user_byok !== false) {
-            updateDirectStatus('浏览器直连模式已启用：简单工具会优先使用当前浏览器保存的 API Key，Key 不会发送到 GEOrank 后端。', 'active');
+            updateDirectStatus('浏览器直连模式已启用：简单工具会优先使用当前浏览器保存的 API Key，Key 不会发送到 苏七三 后端。', 'active');
             return;
         }
         updateDirectStatus('当前使用本地规则生成；后台启用浏览器直连后，简单工具可直接调用用户本地 API Key。');
@@ -128,7 +128,7 @@
     }
 
     function buildDirectMessages(toolKey, inputText) {
-        const common = '你是 GEOrank 的 GEO 小工具生成助手。根据用户输入生成可直接使用的结果，不要解释你的过程，不要输出寒暄。';
+        const common = '你是 苏七三 的 GEO 小工具生成助手。根据用户输入生成可直接使用的结果，不要解释你的过程，不要输出寒暄。';
         const instructions = {
             jsonld: '只返回合法 JSON，不要包含 Markdown 代码块。输出 Schema.org JSON-LD，优先包含 Organization 和 WebSite；字段缺失时根据输入合理补齐，但不要编造具体客户、价格或证书。',
             llms: '返回一份 llms.txt 草稿，使用 Markdown/txt 风格，包含站点摘要、重要页面、AI Reading Notes 和限制说明。',

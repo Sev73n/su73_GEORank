@@ -295,7 +295,7 @@
         if (elements.secondaryTitle) {
             elements.secondaryTitle.textContent = '栏目索引';
         }
-        setDocumentMeta('GEO 教程中心 - GEOrank', 'GEO 生成式引擎优化教程中心 — 科普教程、最佳实践与技术文档。');
+        setDocumentMeta('GEO 教程中心 - 苏七三', 'GEO 生成式引擎优化教程中心 — 科普教程、最佳实践与技术文档。');
         updateReadingProgress();
     }
 
@@ -491,7 +491,7 @@
         }
         const articleText = normalizeText(elements.article?.textContent || '');
         setDocumentMeta(
-            `${detail.title || 'GEO 教程中心'} - GEOrank`,
+            `${detail.title || 'GEO 教程中心'} - 苏七三`,
             articleText.slice(0, 120) || 'GEO 生成式引擎优化知识库'
         );
         updateReadingProgress();
@@ -604,7 +604,7 @@
 
         renderChannelToc();
         initSmoothScroll();
-        setDocumentMeta('GEO 教程中心 - GEOrank', 'GEO 生成式引擎优化教程中心 — 科普教程、最佳实践与技术文档。');
+        setDocumentMeta('GEO 教程中心 - 苏七三', 'GEO 生成式引擎优化教程中心 — 科普教程、最佳实践与技术文档。');
         updateReadingProgress();
     }
 
